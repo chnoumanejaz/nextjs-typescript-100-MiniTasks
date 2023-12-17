@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`bg-white ${inter.className}`}
+        className={`bg-white text-gray-900 ${inter.className}`}
         suppressHydrationWarning={true}>
         <aside>
           <SideBar />

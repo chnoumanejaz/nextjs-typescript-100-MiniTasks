@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     <Link
       href="/"
-      className="flex flex-row gap-3 items-center justify-center md:justify-start md:px-6 border-b group border-zinc-200 h-[51px] w-full">
+      className="flex flex-row gap-3 items-center justify-center md:justify-start md:px-6 border-b group border-violet-200 h-[51px] w-full">
       <span className="h-7 w-7 overflow-hidden rounded-md flex justify-center items-center p-4">
         <Image
           src="/logo.png"

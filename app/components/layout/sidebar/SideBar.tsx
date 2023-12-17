@@ -6,7 +6,7 @@ import MenuItemSideBar from './MenuItemSideBar';
 
 const SideBar = () => {
   return (
-    <div className="h-screen overflow-y-auto border-r border-zinc-200 hidden md:flex">
+    <div className="h-screen overflow-y-auto border-r border-violet-200 hidden md:flex">
       <div className="space-y-6 w-full">
         <Logo />
         <div className="space-y-2 md:px-4 ">

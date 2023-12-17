@@ -8,24 +8,24 @@ export const SIDENAV_ITEMS: SideNavItem[] = [
     icon: <Icon icon="iconoir:home" width="20" height="20" />,
   },
   {
-    title: 'Components',
-    path: '/functionalities',
+    title: 'Solutions',
+    path: '/solutions',
     icon: <Icon icon="fluent-mdl2:web-components" width="20" height="20" />,
     submenu: true,
     submenuItems: [
       {
         title: 'All',
-        path: '/functionalities',
+        path: '/solutions',
         icon: <Icon icon="ic:round-border-all" width="17" height="17" />,
       },
       {
         title: 'Search',
-        path: '/functionalities/search-functionality',
+        path: '/solutions/searching',
         icon: <Icon icon="ic:baseline-search" width="17" height="17" />,
       },
       {
         title: 'Filters',
-        path: '/functionalities/search-functionality',
+        path: '/solutions/searching',
         icon: <Icon icon="mi:filter" width="17" height="17" />,
       },
     ],

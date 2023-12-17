@@ -18,9 +18,9 @@ const MenuItemSideBar = ({ item }: { item: SideNavItem }) => {
         <>
           <button
             onClick={toggleSubMenu}
-            className={`flex flex-row items-center p-2 rounded-md w-full justify-between hover:bg-zinc-100 transition-all duration-200 group ${
+            className={`flex flex-row items-center p-2 rounded-md w-full justify-between hover:bg-violet-100 transition-all duration-200 group ${
               pathname.includes(item.path)
-                ? 'bg-zinc-100 border-zinc-300/75'
+                ? 'bg-violet-100 border-violet-300/75'
                 : 'border-transparent'
             } border`}>
             <div className="flex flex-row space-x-4 items-center">
@@ -46,8 +46,8 @@ const MenuItemSideBar = ({ item }: { item: SideNavItem }) => {
                     href={subItem.path}
                     className={`${
                       subItem.path === pathname
-                        ? 'bg-zinc-100'
-                        : 'hover:opacity-75 hover:bg-zinc-100'
+                        ? 'bg-violet-100'
+                        : 'hover:opacity-75 hover:bg-violet-100'
                     } py-1 px-4 rounded-md`}>
                     <span className="flex gap-2 items-center">
                       {subItem.icon}
@@ -62,9 +62,9 @@ const MenuItemSideBar = ({ item }: { item: SideNavItem }) => {
       ) : (
         <Link
           href={item.path}
-          className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-zinc-100 transition-all duration-200 group ${
+          className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-violet-100 transition-all duration-200 group ${
             item.path === pathname
-              ? 'bg-zinc-100 border-zinc-300/75'
+              ? 'bg-violet-100 border-violet-300/75'
               : 'border-transparent'
           } border`}>
           <span className="transition-all duration-200 group-hover:animate-pulse">
