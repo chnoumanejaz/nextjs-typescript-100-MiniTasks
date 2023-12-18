@@ -1,13 +1,35 @@
-'use client';
 import { Icon } from '@iconify/react/dist/iconify.js';
-import React, { useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 
 interface SearchInputProps {
   placeholder: string;
+  data: any[];
+  setData: React.Dispatch<React.SetStateAction<any[]>>;
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({ placeholder }) => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
+const SearchInput: React.FC<SearchInputProps> = ({
+  placeholder,
+  data,
+  searchQuery,
+  setSearchQuery,
+  setData,
+}) => {
+  // Search query handler
+  const handleSearchQuery = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  useEffect(() => {
+    let tempData = data;
+    tempData = data.filter(item =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setData(tempData);
+
+    // eslint-disable-next-line
+  }, [searchQuery, data, setData]);
 
   return (
     <div className="flex items-center flex-grow relative w-full">
@@ -22,7 +44,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ placeholder }) => {
         type="search"
         placeholder={placeholder}
         value={searchQuery}
-        onChange={e => setSearchQuery(e.target.value)}
+        onChange={handleSearchQuery}
       />
     </div>
   );

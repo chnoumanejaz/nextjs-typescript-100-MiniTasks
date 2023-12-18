@@ -3,6 +3,7 @@ import { solutionsType } from '@/types';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface SolutionCardProps {
   solution: solutionsType;
@@ -13,8 +14,11 @@ const SolutionCard: React.FC<SolutionCardProps> = ({ solution }) => {
   const router = useRouter();
 
   return (
-    <div
-      className="w-[16rem] h-[10rem] py-4 px-4 relative bg-white border rounded-md cursor-pointer hover:shadow-md hover:border-violet-300 group transition duration-300"
+    <motion.div
+      initial={{ opacity: 0, x: -3 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.2, delay: serial * 0.05 }}
+      className="w-[16rem] h-[10rem] py-4 px-4 relative bg-gradient-to-br from-violet-50 hover:from-violet-100 to-white border rounded-md cursor-pointer hover:shadow-md hover:border-violet-300 group transition-all duration-300"
       onClick={() => router.push(path)}>
       <div className="flex items-center justify-between gap-3">
         <small className="w-[1.5rem] h-[1.5rem] bg-violet-200 rounded-full border border-violet-600 p-1 flex items-center justify-center">
@@ -43,7 +47,7 @@ const SolutionCard: React.FC<SolutionCardProps> = ({ solution }) => {
         height={70}
         className="absolute right-0 bottom-1 opacity-10 -rotate-12 group-hover:-rotate-0 transition-transform duration-300 "
       />
-    </div>
+    </motion.div>
   );
 };
 
