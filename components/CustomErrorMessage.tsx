@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import React from 'react';
 
 import { motion } from 'framer-motion';
-import Button from './Button';
+import { Button } from './ui/button';
 
 interface CustomErrorMessageProps {
   message: string;
@@ -37,11 +37,9 @@ const CustomErrorMessage: React.FC<CustomErrorMessageProps> = ({
       </div>
 
       {showResetBtn && (
-        <Button
-          title={resetMessage ? (resetMessage as string) : 'Reset query'}
-          showIcon
-          onClick={() => setQuery?.('')}
-        />
+        <Button onClick={() => setQuery?.('')}>
+          {resetMessage ? resetMessage : 'Reset query'}
+        </Button>
       )}
     </motion.div>
   );
