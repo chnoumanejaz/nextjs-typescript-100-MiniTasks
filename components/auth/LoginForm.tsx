@@ -40,7 +40,7 @@ const LoginForm = () => {
       login(data).then(data => {
         setError(data.error);
         setSuccess(data.success);
-        // TODO: reset the form on submission
+        form.reset();
       });
     });
   }
@@ -99,8 +99,8 @@ const LoginForm = () => {
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button type="submit" className="w-full" disabled={isPending}>
-            Login Now
-            {/* TODO: change the label dynamically and add loading */}
+            {isPending ? 'Logging in...' : 'Login Now'}
+            {/* TODO:  add loading */}
           </Button>
         </form>
       </Form>

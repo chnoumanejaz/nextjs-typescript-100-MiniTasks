@@ -131,6 +131,4 @@ const RegisterForm = () => {
 
 export default RegisterForm;
 
-{
-  /* TODO: add an eye on the password field */
-}
+/* TODO: add an eye on the password field */

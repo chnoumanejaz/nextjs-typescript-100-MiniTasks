@@ -3,7 +3,7 @@
 import { getUserByEmail } from '@/data/user';
 import { db } from '@/lib/db';
 import { RegisterSchema, TRegisterSchema } from '@/schemas/loginFormSchema';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export const register = async (data: TRegisterSchema) => {
   console.log(data);
