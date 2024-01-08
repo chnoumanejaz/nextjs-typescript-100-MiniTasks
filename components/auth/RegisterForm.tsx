@@ -42,7 +42,7 @@ const RegisterForm = () => {
       register(data).then(data => {
         setError(data.error);
         setSuccess(data.success);
-        // TODO: reset the form on submmision
+        form.reset();
       });
     });
   }
@@ -120,8 +120,8 @@ const RegisterForm = () => {
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button type="submit" className="w-full" disabled={isPending}>
-            {/* TODO: change the label dynamically and add loading */}
-            Create an account
+            {/* TODO: add spinner here */}
+            {isPending ? 'Creating an account...' : 'Create an account'}
           </Button>
         </form>
       </Form>
@@ -130,3 +130,7 @@ const RegisterForm = () => {
 };
 
 export default RegisterForm;
+
+{
+  /* TODO: add an eye on the password field */
+}
