@@ -1,13 +1,13 @@
 'use client';
 import React, { useState } from 'react';
-import PageHeader from '../components/PageHeader';
-import SolutionCard from '../components/card/SolutionCard';
-import SearchInput from '../components/SearchInput';
-import SelectFilter from '../components/SelectFilter';
+import PageHeader from '../../components/PageHeader';
+import SolutionCard from '../../components/card/SolutionCard';
+import SearchInput from '../../components/SearchInput';
+import SelectFilter from '../../components/SelectFilter';
 import { solutions } from '@/assets/data/solutionsData';
 import { extractUniqueValues } from '@/helpers';
 import { solutionsType } from '@/types';
-import CustomErrorMessage from '../components/CustomErrorMessage';
+import CustomErrorMessage from '../../components/CustomErrorMessage';
 
 const ComponentsPage = () => {
   const [filteredData, setFilteredData] = useState<solutionsType[]>(solutions);

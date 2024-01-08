@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import DesktopHeader from './components/layout/header/DesktopHeader';
-import MobileHeader from './components/layout/header/MobileHeader';
-import SideBar from './components/layout/sidebar/SideBar';
+import DesktopHeader from '../components/layout/header/DesktopHeader';
+import MobileHeader from '../components/layout/header/MobileHeader';
+import SideBar from '../components/layout/sidebar/SideBar';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });

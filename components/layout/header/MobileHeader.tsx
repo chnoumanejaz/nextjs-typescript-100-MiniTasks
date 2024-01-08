@@ -1,5 +1,5 @@
 'use client';
-import { SIDENAV_ITEMS } from '@/constants';
+import { SIDENAV_ITEMS } from '@/navigation';
 import { useDimensions } from '@/hooks/useDimensions';
 import { sidebar, ulVariants } from '@/lib/framer-variants';
 import { motion, useCycle } from 'framer-motion';

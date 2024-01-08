@@ -1,6 +1,8 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { SideNavItem } from './types';
 
+// TODO: change the icons
+
 export const SIDENAV_ITEMS: SideNavItem[] = [
   {
     title: 'Home',
