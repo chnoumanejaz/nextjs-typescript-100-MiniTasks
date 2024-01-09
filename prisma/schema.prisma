@@ -27,20 +27,20 @@ model User {
 
 
 model Account {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
+  id  String  @id @default(auto()) @map("_id") @db.ObjectId
   user_id            String   @db.ObjectId
   type               String
   provider           String
   providerAccountId  String
   refresh_token      String?  @db.String
   access_token       String?  @db.String
-  id_token           String?  @db.String
   expires_at         Int?
   token_type         String?
   scope              String?
+  id_token           String?  @db.String
   session_state      String?
-
   user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@map("accounts")
 }
