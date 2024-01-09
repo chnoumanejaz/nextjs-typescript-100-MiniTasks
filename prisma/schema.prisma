@@ -8,6 +8,11 @@ datasource db {
 }
 
 
+enum UserRole{
+  ADMIN
+  USER
+}
+
 model User {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String? 
@@ -15,6 +20,7 @@ model User {
   password String?
   emailVerified DateTime?
   image String?
+  role  UserRole @default(USER)
   createdAt DateTime @default(now())
   accounts Account[]
 }

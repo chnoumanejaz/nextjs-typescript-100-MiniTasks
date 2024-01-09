@@ -13,3 +13,17 @@ export const getUserByEmail = async (email: string) => {
     throw new Error('something went wrong!');
   }
 };
+
+export const getUserById = async (id: string) => {
+  try {
+    const user = await db.user.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    return user;
+  } catch (error) {
+    throw new Error('something went wrong!');
+  }
+};
