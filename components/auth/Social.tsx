@@ -1,9 +1,10 @@
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 import { signIn } from 'next-auth/react';
 import React from 'react';
+import { Button } from '../ui/button';
 
 const Social = () => {
-  const handleClick = (provider: 'google' | 'github') => {
+  const handleClick = (provider: 'google') => {
     signIn(provider, {
       callbackUrl: DEFAULT_LOGIN_REDIRECT,
     });
@@ -11,16 +12,9 @@ const Social = () => {
 
   return (
     <div>
-      <button
-        className="border bg-sky-400"
-        onClick={() => handleClick('google')}>
+      <Button variant="outline" onClick={() => handleClick('google')}>
         Login with Google
-      </button>
-      <button
-        className="border bg-sky-400"
-        onClick={() => handleClick('github')}>
-        Login with Github
-      </button>
+      </Button>
     </div>
   );
 };
