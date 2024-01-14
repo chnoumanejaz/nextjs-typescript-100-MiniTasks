@@ -22,7 +22,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
     from: emailSender,
     to: email,
     subject: 'Reset your password',
-    html: `<p>Click <a href="${resetLink}">here</a> to reset password.</p>`,
+    html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`,
   });
 };
 

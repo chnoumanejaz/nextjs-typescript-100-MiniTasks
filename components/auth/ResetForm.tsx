@@ -4,7 +4,7 @@ import CardWrapper from './CardWrapper';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { LoginSchema, TLoginSchema } from '@/schemas/loginFormSchema';
+import { ResetSchema, TResetSchema } from '@/schemas/loginFormSchema';
 import {
   Form,
   FormControl,
@@ -19,13 +19,13 @@ import FormError from '../FormError';
 import FormSuccess from '../FormSuccess';
 import { login } from '@/actions/login';
 import Link from 'next/link';
+import { reset } from '@/actions/reset';
 
-const LoginForm = () => {
-  const form = useForm<TLoginSchema>({
-    resolver: zodResolver(LoginSchema),
+const ResetForm = () => {
+  const form = useForm<TResetSchema>({
+    resolver: zodResolver(ResetSchema),
     defaultValues: {
       email: '',
-      password: '',
     },
   });
 
@@ -33,12 +33,12 @@ const LoginForm = () => {
   const [error, setError] = useState<string | undefined>('');
   const [success, setSuccess] = useState<string | undefined>('');
 
-  function onSubmit(data: TLoginSchema) {
+  function onSubmit(data: TResetSchema) {
     setError('');
     setSuccess('');
 
     startTransition(() => {
-      login(data).then(data => {
+      reset(data).then(data => {
         setError(data?.error);
         setSuccess(data?.success);
         form.reset();
@@ -48,10 +48,9 @@ const LoginForm = () => {
 
   return (
     <CardWrapper
-      headerLabel="Welcome back"
-      backButtonLabel="Dont have an account?"
-      backButtonHref="/auth/register"
-      showSocial>
+      headerLabel="Forgot your password?"
+      backButtonLabel="Back to login"
+      backButtonHref="/auth/login">
       {/* Login form */}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -68,31 +67,9 @@ const LoginForm = () => {
                       {...field}
                       disabled={isPending}
                       placeholder="name25@example.com"
-                      type="email"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* password */}
-
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password:</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="********"
                       type="text"
                     />
                   </FormControl>
-                  <Link href="/auth/reset">Forgot password?</Link>
                   <FormMessage />
                 </FormItem>
               )}
@@ -101,7 +78,7 @@ const LoginForm = () => {
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button type="submit" className="w-full" disabled={isPending}>
-            {isPending ? 'Logging in...' : 'Login Now'}
+            {isPending ? 'Sending...' : 'Send reset email'}
             {/* TODO:  add loading */}
           </Button>
         </form>
@@ -110,4 +87,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default ResetForm;
