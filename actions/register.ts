@@ -2,12 +2,12 @@
 
 import { getUserByEmail } from '@/data/user';
 import { db } from '@/lib/db';
+import { sendVerificationEmail } from '@/lib/mail';
+import { generateVerificationToken } from '@/lib/tokens';
 import { RegisterSchema, TRegisterSchema } from '@/schemas/loginFormSchema';
 import bcrypt from 'bcryptjs';
 
 export const register = async (data: TRegisterSchema) => {
-  console.log(data);
-
   const validatedFields = RegisterSchema.safeParse(data);
 
   await new Promise<void>(resolve => {
@@ -36,8 +36,8 @@ export const register = async (data: TRegisterSchema) => {
     },
   });
 
-  // TODO: send verification email
-  // return { success: 'Please check you email and verify the account' };
+  const verificationToken = await generateVerificationToken(email);
 
-  return { success: 'Account created successfully' };
+  await sendVerificationEmail(verificationToken.email, verificationToken.token);
+  return { success: 'Please check you email and verify the account' };
 };
