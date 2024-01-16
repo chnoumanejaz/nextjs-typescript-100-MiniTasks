@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 import { useRouter } from 'next/navigation';
+import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog';
+import LoginForm from '../auth/LoginForm';
 
 interface LoginBtnProps {
   children: React.ReactNode;
@@ -18,7 +20,16 @@ const LoginBtn: FC<LoginBtnProps> = ({
     router.push('/auth/login');
   }
 
-  if (mode === 'modal') return <span>Modal will be here</span>;
+  if (mode === 'modal')
+    return (
+      <Dialog>
+        <DialogTrigger asChild={asChild}>{children}</DialogTrigger>
+        <DialogContent className="p-0 w-auto bg-transparent border-none">
+          <LoginForm />
+        </DialogContent>
+      </Dialog>
+    );
+
   return <span onClick={handleLogin}>{children}</span>;
 };
 

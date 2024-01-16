@@ -4,6 +4,7 @@ import { PrismaAdapter } from '@auth/prisma-adapter';
 import { db } from './lib/db';
 import { getUserById } from './data/user';
 import { UserRole } from '@prisma/client';
+import { getUserAccountById } from './actions/account';
 
 export const {
   handlers: { GET, POST },
@@ -33,8 +34,6 @@ export const {
 
       if (!existingUser?.emailVerified) return false;
 
-      // TODO: Add 2FA check
-
       return true;
     },
 
@@ -46,6 +45,12 @@ export const {
       if (token.role && session.user) {
         session.user.role = token.role as UserRole;
       }
+
+      if (session.user) {
+        session.user.email = token.email;
+        session.user.name = token.name;
+        session.user.isOAuth = token.isOAuth as boolean;
+      }
       return session;
     },
     async jwt({ token }) {
@@ -55,7 +60,12 @@ export const {
 
       if (!existingUser) return token;
 
+      const existingAccount = await getUserAccountById(existingUser.id);
+
+      token.isOAuth = !!existingAccount;
       token.role = existingUser.role;
+      token.name = existingUser.name;
+      token.email = existingUser.email;
 
       return token;
     },

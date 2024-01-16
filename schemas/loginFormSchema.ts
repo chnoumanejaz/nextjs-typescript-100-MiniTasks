@@ -32,5 +32,43 @@ export const RegisterSchema = z.object({
     message: 'Name is required',
   }),
 });
-
 export type TRegisterSchema = z.infer<typeof RegisterSchema>;
+
+export const SettingSchema = z
+  .object({
+    name: z.optional(
+      z.string().trim().min(1, { message: 'Please enter a name to update!' })
+    ),
+    email: z.optional(z.string().email()),
+    password: z.optional(
+      z
+        .string()
+        .min(8, { message: 'The password must contain atleast 8 characters' })
+    ),
+    newPassword: z.optional(
+      z
+        .string()
+        .min(8, { message: 'The password must contain atleast 8 characters' })
+    ),
+  })
+  .refine(
+    data => {
+      if (data.password && !data.newPassword) return false;
+      return true;
+    },
+    {
+      message: 'New password is required!',
+      path: ['newPassword'],
+    }
+  )
+  .refine(
+    data => {
+      if (data.newPassword && !data.password) return false;
+      return true;
+    },
+    {
+      message: 'Old password is required!',
+      path: ['password'],
+    }
+  );
+export type TSettingSchema = z.infer<typeof SettingSchema>;

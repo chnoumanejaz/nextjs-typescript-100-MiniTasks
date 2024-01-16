@@ -16,7 +16,7 @@ const SideBar = () => {
             <MenuItemSideBar key={index + item.path} item={item} />
           ))}
 
-          <LoginBtn>
+          <LoginBtn mode="modal" asChild>
             <Button>Login</Button>
           </LoginBtn>
         </div>

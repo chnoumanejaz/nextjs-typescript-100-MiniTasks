@@ -8,8 +8,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 const EmailVerificationPage = () => {
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [error, setError] = useState<string | undefined>('');
+  const [success, setSuccess] = useState<string | undefined>('');
 
   const onSubmit = useCallback(() => {
     if (!token) {
